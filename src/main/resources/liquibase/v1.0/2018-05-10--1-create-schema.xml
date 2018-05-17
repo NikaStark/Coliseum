@@ -1,0 +1,196 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="2018-05-10--1" author="AlexVolochai" context="schemedata">
+        <createTable tableName="halls">
+            <column name="id" type="SERIAL" autoIncrement="true"/>
+            <column name="name" type="VARCHAR(32)"/>
+            <column name="row" type="INT"/>
+            <column name="seat" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-05-10--1-1" author="AlexVolochai" context="schemedata">
+        <addPrimaryKey tableName="halls" columnNames="id" constraintName="halls_pkey"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--1-2" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="halls" columnName="name"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--1-3" author="AlexVolochai" context="schemedata">
+        <addUniqueConstraint tableName="halls" columnNames="name" constraintName="halls_name_key"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--1-4" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="halls" columnName="row"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--1-5" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="halls" columnName="seat"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2" author="AlexVolochai" context="schemedata">
+        <createTable tableName="movies">
+            <column name="id" type="UUID"/>
+            <column name="title" type="VARCHAR(32)"/>
+            <column name="duration" type="INT"/>
+            <column name="status" type="VARCHAR(16)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2-1" author="AlexVolochai" context="schemedata">
+        <addPrimaryKey tableName="movies" columnNames="id" constraintName="movies_pkey"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2-2" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="movies" columnName="title"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2-3" author="AlexVolochai" context="schemedata">
+        <addUniqueConstraint tableName="movies" columnNames="title" constraintName="movies_name_key"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2-4" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="movies" columnName="duration"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--2-5" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="movies" columnName="status"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3" author="AlexVolochai" context="schemedata">
+        <createTable tableName="users">
+            <column name="id" type="UUID"/>
+            <column name="username" type="VARCHAR(16)"/>
+            <column name="password" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(32)"/>
+            <column name="first_name" type="VARCHAR(32)"/>
+            <column name="last_name" type="VARCHAR(32)"/>
+            <column name="role" type="VARCHAR(8)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-1" author="AlexVolochai" context="schemedata">
+        <addPrimaryKey tableName="users" columnNames="id" constraintName="users_pkey"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-2" author="AlexVolochai" context="schemedata">
+        <addUniqueConstraint tableName="users" columnNames="username" constraintName="users_username_key"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-3" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="users" columnName="username"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-4" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="users" columnName="password"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-5" author="AlexVolochai" context="schemedata">
+        <addUniqueConstraint tableName="users" columnNames="email" constraintName="users_email_key"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-6" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="users" columnName="first_name"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-7" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="users" columnName="last_name"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--3-8" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="users" columnName="role"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4" author="AlexVolochai" context="schemedata">
+        <createTable tableName="sessions">
+            <column name="id" type="UUID"/>
+            <column name="id_movie" type="UUID"/>
+            <column name="id_hall" type="INT"/>
+            <column name="start_time" type="TIMESTAMP"/>
+            <column name="price" type="numeric(5, 2)"/>
+            <column name="status" type="VARCHAR(16)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-1" author="AlexVolochai" context="schemedata">
+        <addPrimaryKey tableName="sessions" columnNames="id" constraintName="sessions_pkey"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-2" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="sessions" columnName="id_movie"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-3" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="sessions" columnName="id_hall"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-4" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="sessions" columnName="start_time"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-5" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="sessions" columnName="price"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--4-6" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="sessions" columnName="status"/>
+    </changeSet>
+
+
+    <changeSet id="2018-05-10--4-7" author="AlexVolochai" context="schemedata">
+        <addForeignKeyConstraint baseColumnNames="id_movie" baseTableName="sessions"
+                                 constraintName="sessions_id_movies_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"
+                                 referencedColumnNames="id" referencedTableName="movies"/>
+    </changeSet>
+    <changeSet id="2018-05-10--4-8" author="AlexVolochai" context="schemedata">
+        <addForeignKeyConstraint baseColumnNames="id_hall" baseTableName="sessions"
+                                 constraintName="sessions_id_hall_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"
+                                 referencedColumnNames="id" referencedTableName="halls"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5" author="AlexVolochai" context="schemedata">
+        <createTable tableName="tickets">
+            <column name="id" type="UUID"/>
+            <column name="id_user" type="UUID"/>
+            <column name="id_session" type="UUID"/>
+            <column name="status" type="VARCHAR(16)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-1" author="AlexVolochai" context="schemedata">
+        <addPrimaryKey tableName="tickets" columnNames="id" constraintName="tickets_pkey"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-2" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="tickets" columnName="id_user"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-3" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="tickets" columnName="id_session"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-4" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="tickets" columnName="status"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-5" author="AlexVolochai" context="schemedata">
+        <addForeignKeyConstraint baseColumnNames="id_user" baseTableName="tickets"
+                                 constraintName="tickets_id_users_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="2018-05-10--5-6" author="AlexVolochai" context="schemedata">
+        <addForeignKeyConstraint baseColumnNames="id_session" baseTableName="tickets"
+                                 constraintName="tickets_id_session_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"
+                                 referencedColumnNames="id" referencedTableName="sessions"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="2018-05-11--1" author="AlexVolochai" context="initdata">
+        <insert tableName="users">
+            <column name="id" value="8efdb3f4-f839-11e7-8c3f-9a214cf093ae"/>
+            <column name="username" value="admin"/>
+            <column name="password" value="god"/> <!--TODO Replace origin password to hash-->
+            <column name="email" value="s3v@ukr.net"/>
+            <column name="first_name" value="Admin"/>
+            <column name="last_name" value="the best!"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <rollback>
+            DELETE FROM users WHERE id = '8efdb3f4-f839-11e7-8c3f-9a214cf093ae';
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
