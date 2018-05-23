@@ -8,8 +8,8 @@
         <createTable tableName="halls">
             <column name="id" type="SERIAL" autoIncrement="true"/>
             <column name="name" type="VARCHAR(32)"/>
-            <column name="row" type="INT"/>
-            <column name="seat" type="INT"/>
+            <column name="count_rows" type="INT"/>
+            <column name="count_columns" type="INT"/>
         </createTable>
     </changeSet>
 
@@ -26,11 +26,11 @@
     </changeSet>
 
     <changeSet id="2018-05-10--1-4" author="AlexVolochai" context="schemedata">
-        <addNotNullConstraint tableName="halls" columnName="row"/>
+        <addNotNullConstraint tableName="halls" columnName="count_rows"/>
     </changeSet>
 
     <changeSet id="2018-05-10--1-5" author="AlexVolochai" context="schemedata">
-        <addNotNullConstraint tableName="halls" columnName="seat"/>
+        <addNotNullConstraint tableName="halls" columnName="count_columns"/>
     </changeSet>
 
     <changeSet id="2018-05-10--2" author="AlexVolochai" context="schemedata">
@@ -160,6 +160,8 @@
             <column name="id" type="UUID"/>
             <column name="id_user" type="UUID"/>
             <column name="id_session" type="UUID"/>
+            <column name="row" type="INT"/>
+            <column name="seat" type="INT"/>
             <column name="status" type="VARCHAR(16)"/>
         </createTable>
     </changeSet>
@@ -177,16 +179,24 @@
     </changeSet>
 
     <changeSet id="2018-05-10--5-4" author="AlexVolochai" context="schemedata">
-        <addNotNullConstraint tableName="tickets" columnName="status"/>
+        <addNotNullConstraint tableName="tickets" columnName="row"/>
     </changeSet>
 
     <changeSet id="2018-05-10--5-5" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="tickets" columnName="seat"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-6" author="AlexVolochai" context="schemedata">
+        <addNotNullConstraint tableName="tickets" columnName="status"/>
+    </changeSet>
+
+    <changeSet id="2018-05-10--5-7" author="AlexVolochai" context="schemedata">
         <addForeignKeyConstraint baseColumnNames="id_user" baseTableName="tickets"
                                  constraintName="tickets_id_users_fkey" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"
                                  referencedColumnNames="id" referencedTableName="users"/>
     </changeSet>
-    <changeSet id="2018-05-10--5-6" author="AlexVolochai" context="schemedata">
+    <changeSet id="2018-05-10--5-8" author="AlexVolochai" context="schemedata">
         <addForeignKeyConstraint baseColumnNames="id_session" baseTableName="tickets"
                                  constraintName="tickets_id_session_fkey" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="CASCADE"

@@ -19,6 +19,7 @@
         <project.jstl.version>1.2</project.jstl.version>
         <project.jsp.version>2.0</project.jsp.version>
         <project.slf4j.version>1.7.25</project.slf4j.version>
+        <project.jug.version>3.1.5</project.jug.version>
         <project.postgresql.version>42.1.4</project.postgresql.version>
         <project.liquibase.version>3.5.3</project.liquibase.version>
         <project.junit.version>4.12</project.junit.version>
@@ -64,6 +65,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${project.slf4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator -->
+        <dependency>
+            <groupId>com.fasterxml.uuid</groupId>
+            <artifactId>java-uuid-generator</artifactId>
+            <version>${project.jug.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
@@ -132,13 +140,14 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF8</argLine>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<version></version>-->
+                <!--<configuration>-->
+                    <!--<argLine>-Dfile.encoding=UTF8</argLine>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
             <plugin>
                 <groupId>org.liquibase</groupId>
@@ -156,17 +165,17 @@
                             <goal>update</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>Testing</id>
-                        <configuration>
-                            <propertyFile>src/test/resources/liquibase/liquibase.properties</propertyFile>
-                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                        </configuration>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
+                    <!--<execution>-->
+                        <!--<id>Testing</id>-->
+                        <!--<configuration>-->
+                            <!--<propertyFile>src/test/resources/liquibase/liquibase.properties</propertyFile>-->
+                            <!--<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>-->
+                        <!--</configuration>-->
+                        <!--<phase>generate-test-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>update</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
                 </executions>
             </plugin>
 

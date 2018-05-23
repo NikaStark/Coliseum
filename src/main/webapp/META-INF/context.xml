@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Specify a JDBC datasource -->
+    <Resource name="jdbc/coliseum"
+              auth="Container"
+              type="javax.sql.DataSource"
+
+              defaultAutoCommit="true"
+              defaultTransactionIsolation="READ_COMMITTED"
+              driverClassName="org.postgresql.Driver"
+              username="postgres"
+              password="postgres"
+              maxActive="20"
+              maxIdle="4"
+              initialSize="10"
+              maxWaitMillis="10000"
+              removeAbandoned="true"
+              removeAbandonedTimeout="120"
+              url="jdbc:postgresql://localhost:5432/Coliseum"
+              connectionProperties="useUnicode=yes;characterEncoding=utf8;"
+            />
+
+</Context>
