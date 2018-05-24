@@ -28,6 +28,8 @@ public class TicketDaoImpl extends AbstractJDBCDao<Ticket, UUID> implements Tick
     }
 
     private String SQL_GET_TICKETS_BY_SESSION = SQL_FIND_ALL + " WHERE " + Ticket.SESSION_COLUMN + "=?";
+    private String SQL_BUY_RESERVED_TICKETS_BY_USER = "UPDATE " + Ticket.TABLE_NAME + " SET " + Ticket.STATUS_COLUMN + "=? WHERE " + Ticket.USER_COLUMN + "=? AND " + Ticket.STATUS_COLUMN + "=?";
+    private String SQL_FREE_RESERVED_TICKETS_BY_USER = "DELETE FROM " + Ticket.TABLE_NAME + " WHERE " + Ticket.USER_COLUMN + "=? AND " + Ticket.STATUS_COLUMN + "=?";
 
     TicketDaoImpl() {
     }
@@ -44,6 +46,31 @@ public class TicketDaoImpl extends AbstractJDBCDao<Ticket, UUID> implements Tick
             throw new PersistentException(e);
         }
         return Objects.nonNull(list) ? list : Collections.<Ticket>emptyList();
+    }
+
+    @Override
+    public void buyReservedTicketsByUser(UUID userId, Connection connection) throws PersistentException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_BUY_RESERVED_TICKETS_BY_USER)) {
+            preparedStatement.setString(1, TicketStatus.PURCHASED.toString());
+            preparedStatement.setObject(2, userId);
+            preparedStatement.setString(3, TicketStatus.RESERVED.toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error("Buy reserved tickets by user", e);
+            throw new PersistentException(e);
+        }
+    }
+
+    @Override
+    public void freeReservedTicketsByUser(UUID userId, Connection connection) throws PersistentException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_FREE_RESERVED_TICKETS_BY_USER)) {
+            preparedStatement.setObject(1, userId);
+            preparedStatement.setString(2, TicketStatus.RESERVED.toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.error("Free reserved tickets by user", e);
+            throw new PersistentException(e);
+        }
     }
 
     @Override
@@ -117,5 +144,5 @@ public class TicketDaoImpl extends AbstractJDBCDao<Ticket, UUID> implements Tick
             throw new PersistentException(e);
         }
     }
-    
+
 }

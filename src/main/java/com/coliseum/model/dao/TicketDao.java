@@ -10,4 +10,8 @@ public interface TicketDao<Context> extends GenericDao<Ticket, UUID, Context> {
 
     List<Ticket> getTicketsBySession(UUID sessionId, Context context) throws PersistentException;
 
+    void buyReservedTicketsByUser(UUID userId, Context context) throws PersistentException;
+
+    void freeReservedTicketsByUser(UUID userId, Context context) throws PersistentException;
+
 }

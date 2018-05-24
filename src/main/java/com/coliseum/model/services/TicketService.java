@@ -10,4 +10,8 @@ public interface TicketService extends GenericService<Ticket, UUID> {
 
     List<Ticket> getTicketsBySession(UUID sessionId) throws ServiceException;
 
+    void buyReservedTicketsByUser(UUID userId) throws ServiceException;
+
+    void freeReservedTicketsByUser(UUID userId) throws ServiceException;
+
 }

@@ -20,18 +20,18 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-        <!--<servlet-name>error</servlet-name>-->
-        <!--<jsp-file>/WEB-INF/pages/error.jsp</jsp-file>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>error</servlet-name>-->
-        <!--<url-pattern>/error</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <jsp-file>/WEB-INF/pages/error.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
 
-    <!--<error-page>-->
-        <!--<location>/error</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <location>/error</location>
+    </error-page>
 
     <listener>
         <listener-class>com.coliseum.web.listeners.ApplicationContextListener</listener-class>

@@ -17,6 +17,13 @@ public enum Attribute {
     MOVIES_ATR("movies"),
     SESSIONS_ATR("sessions"),
     SESSION_ID_ATR("sessionId"),
+    SESSION_ATR("session"),
+    TICKET_ID_ATR("ticketId"),
+    TICKETS_ATR("tickets"),
+    RESERVED_TICKETS_ATR("reservedTickets"),
+    ROW_ATR("row"),
+    SEAT_ATR("seat"),
+    MESSAGE_ATR("message"),
     NAVIGATION_FORM_ATR("navigationForm");
 
     private String attribute;

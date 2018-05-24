@@ -30,7 +30,7 @@
                         <li>
                             <form action="${Command.TIMETABLE_PAGE_CMD.getCommand()}" method="post">
                                 <input class="btn btn-link btn-lg" type="submit" value=<fmt:message
-                                        key="header.label.sessionsButton"/>>
+                                        key="header.label.timetableButton"/>>
                             </form>
                         </li>
 
@@ -95,11 +95,11 @@
                 </div>
             </div>
         </nav>
-        <%--<c:if test="${not empty requestScope.get(Attribute.MESSAGE_ATR.getAttribute())}">--%>
-        <%--<div class="alert alert-warning">--%>
-        <%--<strong>Warning!</strong> <c:out value="${requestScope.get(Attribute.MESSAGE_ATR.getAttribute())}"/>--%>
-        <%--</div>--%>
-        <%--</c:if>--%>
+        <c:if test="${not empty requestScope.get(Attribute.MESSAGE_ATR.getAttribute())}">
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> <c:out value="${requestScope.get(Attribute.MESSAGE_ATR.getAttribute())}"/>
+            </div>
+        </c:if>
 
     </body>
 </html>

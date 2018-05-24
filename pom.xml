@@ -165,18 +165,30 @@
                             <goal>update</goal>
                         </goals>
                     </execution>
-                    <!--<execution>-->
-                        <!--<id>Testing</id>-->
-                        <!--<configuration>-->
-                            <!--<propertyFile>src/test/resources/liquibase/liquibase.properties</propertyFile>-->
-                            <!--<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>-->
-                        <!--</configuration>-->
-                        <!--<phase>generate-test-resources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>update</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                    <execution>
+                        <id>Testing</id>
+                        <configuration>
+                            <propertyFile>src/test/resources/liquibase/liquibase.properties</propertyFile>
+                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                        </configuration>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://127.0.0.1:8080/manager/text</url>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
+                    <path>/coliseum</path>
+                </configuration>
             </plugin>
 
         </plugins>

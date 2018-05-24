@@ -9,7 +9,8 @@ public enum Page {
     PROFILE_PAGE("/WEB-INF/pages/profile.jsp"),
     MOVIES_PAGE("/WEB-INF/pages/movies.jsp"),
     TIMETABLE_PAGE("/WEB-INF/pages/timetable.jsp"),
-    SESSION_PAGE("/WEB-INF/pages/session.jsp");
+    SESSION_PAGE("/WEB-INF/pages/session.jsp"),
+    ERROR_PAGE("/WEB-INF/pages/error.jsp");
 
     private String path;
 

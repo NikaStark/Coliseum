@@ -8,13 +8,17 @@ public enum Command {
     REG_PAGE_CMD("registration"),
     PROFILE_PAGE_CMD("profile"),
     MOVIES_PAGE_CMD("movies"),
-    TIMETABLE_PAGE_CMD("timeTable"),
+    TIMETABLE_PAGE_CMD("timetable"),
     SESSION_PAGE_CMD("session"),
+    ERROR_PAGE_CMD("error"),
     AUTH_CMD("auth"),
     LOGOUT_CMD("logout"),
     CREATE_USER_CMD("createUser"),
     UPDATE_USER_PASSWORD_CMD("updateUserPassword"),
-    UPDATE_USER_INFO_CMD("updateUserInfo");
+    UPDATE_USER_INFO_CMD("updateUserInfo"),
+    ADD_TO_BASKET_CMD("addToBasket"),
+    REMOVE_FROM_BASKET_CMD("removeFromBasket"),
+    BUY_BASKET_CMD("buyBasket");
 
     private String command;
 

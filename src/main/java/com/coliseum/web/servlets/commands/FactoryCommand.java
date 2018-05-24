@@ -13,11 +13,15 @@ public enum FactoryCommand {
     MOVIES_PAGE_CMD(Command.MOVIES_PAGE_CMD, new MoviesPageCommand()),
     TIMETABLE_PAGE_CMD(Command.TIMETABLE_PAGE_CMD, new TimetablePageCommand()),
     SESSION_PAGE_CMD(Command.SESSION_PAGE_CMD, new SessionPageCommand()),
+    ERROR_PAGE_CMD(Command.ERROR_PAGE_CMD, new ErrorPageCommand()),
     AUTH_CMD(Command.AUTH_CMD, new AuthCommand()),
     LOGOUT_CMD(Command.LOGOUT_CMD, new LogoutCommand()),
     CREATE_USER_CMD(Command.CREATE_USER_CMD, new CreateUserCommand()),
     UPDATE_USER_PASSWORD_CMD(Command.UPDATE_USER_PASSWORD_CMD, new UpdateUserPasswordCommand()),
-    UPDATE_USER_INFO_CMD(Command.UPDATE_USER_INFO_CMD, new UpdateUserInfoCommand());
+    UPDATE_USER_INFO_CMD(Command.UPDATE_USER_INFO_CMD, new UpdateUserInfoCommand()),
+    ADD_TO_BASKET_CMD(Command.ADD_TO_BASKET_CMD, new AddToBasketCommand()),
+    REMOVE_FROM_BASKET_CMD(Command.REMOVE_FROM_BASKET_CMD, new RemoveFromBasketCommand()),
+    BUY_BASKET_CMD(Command.BUY_BASKET_CMD, new BuyBasketCommand());
 
     private Command commandName;
     private ICommand commandImpl;
